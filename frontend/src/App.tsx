@@ -27,33 +27,55 @@ export default function App() {
     localStorage.setItem('theme', theme)
   }, [theme])
 
+  const handleResume = () => {
+    try {
+      const d = localStorage.getItem('smash:draft')
+      if (d) {
+        window.dispatchEvent(new CustomEvent('smash:resume', { detail: JSON.parse(d) }))
+      }
+    } catch {}
+    setHasDraft(false)
+    setResumeOpen(false)
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-10 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 py-3">
-          <div className="grid grid-cols-2 md:grid-cols-3 items-center gap-x-4 gap-y-2">
-            <Link to="/" className="flex items-center gap-3 truncate col-span-2 md:col-span-1">
+      <header className="sticky top-0 z-50 isolate bg-white/85 dark:bg-ink-900/90 backdrop-blur supports-[backdrop-filter]:backdrop-blur shadow-header">
+        <div className="border-b border-ink-100/70 dark:border-ink-800/70">
+          <div className="mx-auto max-w-6xl px-6 py-3 flex flex-wrap items-center justify-between gap-4">
+            <Link to="/" className="flex items-center gap-4">
               <img src="/assets/msr_dk_red.png" alt="Matraville Smash Repairs" className="h-10 w-auto dark:hidden" />
               <img src="/assets/msr__white_bright_red.png" alt="Matraville Smash Repairs" className="h-10 w-auto hidden dark:block" />
-              <span className="sr-only">Matraville Smash Repairs Onboarding</span>
+              <div className="hidden sm:block">
+                <p className="text-xs uppercase tracking-[0.35em] text-ink-500">Client intake</p>
+                <p className="font-semibold text-ink-800 dark:text-ink-50">Smash Repair Engagement</p>
+              </div>
             </Link>
-            <div className="hidden md:flex items-center justify-center text-xs text-slate-600 dark:text-slate-300">
-              Step {current} of {total} ({progress}%)
-            </div>
-            <nav className="flex items-center justify-end gap-3 col-span-2 md:col-span-1">
-              <button className="text-sm underline" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</button>
+            <nav className="flex items-center gap-3 text-sm text-ink-600 dark:text-ink-200">
+              <button className="btn-ghost px-3" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</button>
               <MagicLink trigger={(open) => (
                 <button className="btn btn-outline btn-sm" onClick={open}>Send magic link</button>
               )} />
-              <a className="text-sm underline" href="/admin">Admin</a>
+              <a className="btn btn-ghost px-3" href="/admin">Admin</a>
             </nav>
           </div>
-            {/* Removed duplicate global progress bar; stepper owns progress UI */}
+        </div>
+        <div className="mx-auto max-w-6xl px-6 py-3 flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm text-ink-500 dark:text-ink-300">
+          <div className="flex items-center gap-3">
+            <span className="font-medium text-ink-700 dark:text-ink-100">Step {current} of {total}</span>
+            <span className="hidden sm:inline">Estimated completion: ~10 minutes</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="font-medium text-ink-600 dark:text-ink-200">Need help?</span>
+            <a href="tel:+612000000" className="text-brand-600 font-semibold">02 9000 0000</a>
+            <span className="hidden md:inline text-ink-400">or</span>
+            <a href="mailto:intake@matravillesmash.com.au" className="hidden md:inline text-brand-600">intake@matravillesmash.com.au</a>
+          </div>
         </div>
         {hasDraft && (
-          <div className="bg-yellow-50 border-t border-yellow-200">
-            <div className="mx-auto max-w-3xl px-4 py-2 text-sm">
-              A saved draft was found. <button className="underline" onClick={() => setResumeOpen(true)}>Resume now</button> or <button className="underline" onClick={() => { localStorage.removeItem('smash:draft'); setHasDraft(false) }}>discard</button>.
+          <div className="bg-amber-50 border-t border-amber-200">
+            <div className="mx-auto max-w-4xl px-6 py-2 text-sm text-ink-700">
+              Draft found. <button className="font-semibold underline" onClick={handleResume}>Resume now</button> or <button className="underline" onClick={() => { localStorage.removeItem('smash:draft'); setHasDraft(false) }}>discard</button>.
             </div>
           </div>
         )}
@@ -61,22 +83,25 @@ export default function App() {
       <Modal open={resumeOpen} onClose={() => setResumeOpen(false)} title="Resume your saved draft?" actions={
         <>
           <button className="btn btn-secondary" onClick={() => { localStorage.removeItem('smash:draft'); setHasDraft(false); setResumeOpen(false) }}>Start over</button>
-          <button className="btn btn-primary" onClick={() => {
-            const d = localStorage.getItem('smash:draft')
-            if (d) window.dispatchEvent(new CustomEvent('smash:resume', { detail: JSON.parse(d) }))
-            setResumeOpen(false)
-          }}>Resume</button>
+          <button className="btn btn-primary" onClick={handleResume}>Resume</button>
         </>
       }>
         <p className="text-sm text-slate-700 dark:text-slate-300">We can restore your previous progress on this device.</p>
       </Modal>
-      <main className="flex-1">
-        <div className="mx-auto max-w-5xl px-4 py-6">
+      <main className="flex-1 bg-gradient-to-b from-ink-50 via-white to-white dark:from-ink-900 dark:via-ink-900/95 dark:to-ink-900">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10">
           <Outlet />
         </div>
       </main>
-      <footer className="border-t text-xs text-gray-500">
-        <div className="mx-auto max-w-3xl px-4 py-4">© {new Date().getFullYear()} Your Smash Repairs (AU)</div>
+      <footer className="border-t border-ink-100 dark:border-ink-800 bg-white/80 dark:bg-ink-900/90">
+        <div className="mx-auto max-w-6xl px-6 py-6 text-xs sm:text-sm text-ink-500 dark:text-ink-300 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <span>© {new Date().getFullYear()} Matraville Smash Repairs. All rights reserved.</span>
+          <div className="flex gap-4">
+            <a href="#" className="hover:text-brand-600">Privacy</a>
+            <a href="#" className="hover:text-brand-600">Terms</a>
+            <a href="mailto:intake@matravillesmash.com.au" className="hover:text-brand-600">Contact</a>
+          </div>
+        </div>
       </footer>
     </div>
   )

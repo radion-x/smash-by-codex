@@ -4,6 +4,7 @@ import { yourDetailsSchema } from '@/schemas'
 import { z } from 'zod'
 import { useFormStore } from '@/store/formStore'
 import type { StepProps } from '../Wizard'
+import Section from '@/components/Section'
 
 type F = z.infer<typeof yourDetailsSchema>
 
@@ -15,10 +16,11 @@ export default function YourDetails({ onBack, onNext }: StepProps) {
   const submit = (v: F) => { update({ your: v }); onNext() }
 
   return (
-    <form onSubmit={form.handleSubmit(submit)} className="space-y-4">
-      <Section title="Your details" subtitle="We’ll use these to contact you about your repair."></Section>
-      <div className="grid gap-3">
-        <div>
+    <form onSubmit={form.handleSubmit(submit)} className="space-y-8">
+      <Section title="Your contact details" subtitle="We’ll confirm progress and next steps using your preferred channel." />
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div className="sm:col-span-2">
           <label className="label">Full name</label>
           <input className="input" {...form.register('fullName')} />
         </div>
@@ -29,7 +31,7 @@ export default function YourDetails({ onBack, onNext }: StepProps) {
         <div>
           <label className="label">Mobile</label>
           <input className="input" inputMode="tel" placeholder="04xxxxxxxx" {...form.register('mobile')} />
-          <p className="help">AU mobiles start with 04 and have 10 digits.</p>
+          <p className="help">Use a number we can reach during business hours.</p>
         </div>
         <div>
           <label className="label">Preferred contact</label>
@@ -39,10 +41,10 @@ export default function YourDetails({ onBack, onNext }: StepProps) {
             <option value="call">Phone call</option>
           </select>
         </div>
-        <div>
+        <div className="sm:col-span-2">
           <label className="label">Residential address</label>
           <input className="input" placeholder="Start typing…" {...form.register('address')} />
-          <p className="help">Autocomplete can be enabled later; manual entry is fine.</p>
+          <p className="help">Street address including suburb. Manual entry is fine.</p>
         </div>
         <div>
           <label className="label">Date of birth (optional)</label>
@@ -50,11 +52,10 @@ export default function YourDetails({ onBack, onNext }: StepProps) {
         </div>
       </div>
 
-      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2 sm:justify-between">
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-3 sm:justify-between">
         <button type="button" className="btn btn-secondary w-full sm:w-auto" onClick={onBack}>Back</button>
-        <button type="submit" className="btn btn-primary w-full sm:w-auto">Continue</button>
+        <button type="submit" className="btn btn-primary w-full sm:w-auto">Save &amp; Continue</button>
       </div>
     </form>
   )
 }
-import Section from '@/components/Section'

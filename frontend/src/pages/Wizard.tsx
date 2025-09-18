@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Stepper from '@/components/Stepper'
 import WelcomeConsent from './wizard/WelcomeConsent'
 import YourDetails from './wizard/YourDetails'
@@ -29,10 +29,15 @@ export default function Wizard() {
   const step = useFormStore((s) => s.step)
   const setStep = useFormStore((s) => s.setStep)
   const [busy, setBusy] = useState(false)
+  const [hasDraft, setHasDraft] = useState(false)
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    setHasDraft(!!localStorage.getItem('smash:draft'))
+  }, [])
   const Current = steps[Math.min(step - 1, steps.length - 1)].component
 
   return (
-    <div>
+    <div className="space-y-8">
       <Stepper
         steps={steps.map(s => ({ key: String(s.id), label: s.title }))}
         currentIndex={step-1}
@@ -42,15 +47,41 @@ export default function Wizard() {
         showProgressBar
       />
 
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-6 mt-4">
-        <div className="card p-4 motion-safe:animate-slide-up">
+      <section className="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(260px,1fr)]">
+        <div className="card p-6 sm:p-8 space-y-8 motion-safe:animate-slide-up">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-ink-100 pb-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.4em] text-ink-500">Current step</p>
+              <h1>{steps[step-1]?.title}</h1>
+            </div>
+            <div className="text-sm text-ink-500">
+              {step < steps.length && <span>Next: <span className="font-medium text-ink-700">{steps[step]?.title}</span></span>}
+            </div>
+          </div>
+
           <Current setBusy={setBusy} onNext={() => setStep(step + 1)} onBack={() => setStep(Math.max(1, step - 1))} />
         </div>
-        <aside className="hidden lg:block self-start sticky top-24 card p-4">
-          <h3 className="text-sm font-semibold mb-2">Tips</h3>
-          <p className="text-sm text-slate-600">Keep details concise. You can revisit earlier steps anytime. On mobile, photos upload faster on Wi‑Fi.</p>
+
+        <aside className="space-y-6 self-start">
+          <div className="card p-6 space-y-3">
+            <h3 className="text-sm font-semibold text-ink-700">Status summary</h3>
+            <ul className="space-y-2 text-sm text-ink-500">
+              <li className="flex items-center justify-between"><span>Progress</span><span className="font-medium text-ink-700">{Math.round((step/steps.length)*100)}%</span></li>
+              <li className="flex items-center justify-between"><span>Remaining steps</span><span className="font-medium text-ink-700">{steps.length - step}</span></li>
+              <li className="flex items-center justify-between"><span>Draft saved</span><span className="font-medium text-ink-700">{hasDraft ? 'Yes' : 'No'}</span></li>
+            </ul>
+          </div>
+
+          <div className="card p-6 space-y-3">
+            <h3 className="text-sm font-semibold text-ink-700">Helpful tips</h3>
+            <ul className="space-y-2 text-sm text-ink-500">
+              <li>Upload clear, well-lit photos — landscape works best.</li>
+              <li>Have your licence, rego and insurer details handy.</li>
+              <li>You can revisit earlier steps anytime without losing data.</li>
+            </ul>
+          </div>
         </aside>
-      </div>
+      </section>
     </div>
   )
 }

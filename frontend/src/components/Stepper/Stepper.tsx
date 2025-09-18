@@ -144,7 +144,7 @@ export default function Stepper({
             <div className="stepper-mask overflow-hidden">
               <ol
                 ref={listRef}
-                className="mx-auto max-w-6xl py-2 flex flex-nowrap items-center gap-4 lg:gap-6 overflow-x-auto whitespace-nowrap snap-x snap-mandatory scrollbar-none scroll-px-10 px-6 md:px-8"
+                className="mx-auto max-w-6xl py-2 flex flex-nowrap items-center gap-7 lg:gap-9 overflow-x-auto whitespace-nowrap snap-x snap-mandatory scrollbar-none scroll-px-10 px-6 md:px-8"
                 onKeyDown={onKeyDown}
               >
                 {visualSteps.map((s, i) => (
@@ -155,21 +155,21 @@ export default function Stepper({
                       title={s.tooltip || s.label}
                       aria-describedby={`tip-${s.key}`}
                       tabIndex={i === currentIndex ? 0 : -1}
-                    className={`snap-start inline-flex shrink-0 items-center gap-2 h-11 md:h-12 px-4 py-0 rounded-full border transition-all min-w-[max-content] leading-none bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/50 ${
-                      s._state === 'current'
-                        ? `${accentBorder} ${primary} shadow-md font-semibold`
-                        : s._state === 'completed'
-                        ? 'border-slate-200 text-slate-600 hover:text-slate-700 shadow-sm'
-                        : 'border-slate-200 text-slate-500 hover:text-slate-600'
+                    className={`snap-start inline-flex shrink-0 items-center gap-3 h-11 md:h-12 px-5 py-0 rounded-full border transition-all min-w-[max-content] leading-none bg-white relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/50 ${
+                        s._state === 'current'
+                          ? `z-10 ${accentBorder} ${primary} shadow-md font-semibold`
+                          : s._state === 'completed'
+                          ? 'z-0 border-ink-200 text-ink-600 hover:text-ink-700'
+                          : 'z-0 border-ink-200 text-ink-500 hover:text-ink-600'
                       }`}
                       onClick={() => tryGo(i)}
                     >
-                      <span className={`inline-flex items-center justify-center h-5 w-5 rounded-full border ${
-                        s._state === 'completed' ? 'bg-brand-600 border-brand-600 text-white' : s._state === 'current' ? `${accentBorder} text-brand-700` : 'border-slate-300 text-slate-400'
+                      <span className={`inline-flex items-center justify-center h-5 w-5 rounded-full ring-1 ${
+                        s._state === 'completed' ? 'bg-brand-600 ring-brand-600 text-white' : s._state === 'current' ? 'ring-brand-600 text-brand-700' : 'ring-ink-200 text-ink-400'
                       }`}>
                         {s._state === 'completed' ? <CheckIcon /> : s._state === 'current' ? <DotIcon /> : <span className="sr-only">{i+1}</span>}
                       </span>
-                      <span className="truncate leading-5 max-w-[18ch] md:max-w-[22ch] lg:max-w-[28ch]">{s.label}</span>
+                      <span className="truncate leading-5 max-w-[20ch] md:max-w-[24ch] lg:max-w-[30ch]">{s.label}</span>
                     </button>
                     <span id={`tip-${s.key}`} className="sr-only">{s.tooltip || s.label}</span>
                   </li>
@@ -182,7 +182,7 @@ export default function Stepper({
                 <button
                   type="button"
                   aria-label="Scroll steps left"
-                  className={`absolute z-20 left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 dark:bg-slate-900/90 shadow ring-1 ring-slate-200 dark:ring-slate-700 flex items-center justify-center transition-opacity ${showLeft ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                  className={`absolute z-20 left-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 dark:bg-slate-900/90 shadow ring-1 ring-ink-200 dark:ring-ink-700 flex items-center justify-center transition-opacity ${showLeft ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                   onClick={() => { const el=listRef.current; if(!el) return; el.scrollBy({ left: -el.clientWidth*0.8, behavior: 'smooth' }) }}
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
@@ -190,7 +190,7 @@ export default function Stepper({
                 <button
                   type="button"
                   aria-label="Scroll steps right"
-                  className={`absolute z-20 right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 dark:bg-slate-900/90 shadow ring-1 ring-slate-200 dark:ring-slate-700 flex items-center justify-center transition-opacity ${showRight ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                  className={`absolute z-20 right-2 top-1/2 -translate-y-1/2 h-9 w-9 rounded-full bg-white/90 dark:bg-slate-900/90 shadow ring-1 ring-ink-200 dark:ring-ink-700 flex items-center justify-center transition-opacity ${showRight ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                   onClick={() => { const el=listRef.current; if(!el) return; el.scrollBy({ left: el.clientWidth*0.8, behavior: 'smooth' }) }}
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>

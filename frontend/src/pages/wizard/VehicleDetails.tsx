@@ -4,6 +4,7 @@ import { vehicleDetailsSchema } from '@/schemas'
 import { z } from 'zod'
 import { useFormStore } from '@/store/formStore'
 import type { StepProps } from '../Wizard'
+import Section from '@/components/Section'
 
 type F = z.infer<typeof vehicleDetailsSchema>
 
@@ -15,9 +16,10 @@ export default function VehicleDetails({ onBack, onNext }: StepProps) {
   const submit = (v: F) => { update({ vehicle: v }); onNext() }
 
   return (
-    <form onSubmit={form.handleSubmit(submit)} className="space-y-4">
-      <Section title="Vehicle details" subtitle="Tell us about your car so we can identify parts and verify registration."></Section>
-      <div className="grid sm:grid-cols-2 gap-3">
+    <form onSubmit={form.handleSubmit(submit)} className="space-y-8">
+      <Section title="Vehicle particulars" subtitle="Accurate details help us order parts ahead of time and coordinate with your insurer." />
+
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label className="label">Rego</label>
           <input className="input" {...form.register('rego')} />
@@ -25,13 +27,15 @@ export default function VehicleDetails({ onBack, onNext }: StepProps) {
         <div>
           <label className="label">State</label>
           <select className="input" {...form.register('regoState')}>
-            {['NSW','VIC','QLD','WA','SA','TAS','ACT','NT'].map(s => <option key={s} value={s}>{s}</option>)}
+            {['NSW','VIC','QLD','WA','SA','TAS','ACT','NT'].map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
           </select>
         </div>
         <div className="sm:col-span-2">
           <label className="label">VIN</label>
           <input className="input" {...form.register('vin')} />
-          <p className="help">VIN is usually on the windscreen, door jamb, or rego papers (17 characters).</p>
+          <p className="help">17 characters located on the windscreen, door jamb, or rego papers.</p>
         </div>
         <div>
           <label className="label">Make</label>
@@ -63,11 +67,11 @@ export default function VehicleDetails({ onBack, onNext }: StepProps) {
         </div>
         <div className="sm:col-span-2">
           <label className="label">Factory options & accessories</label>
-          <input className="input" placeholder="e.g., roof racks, dash cam, bull bar" {...form.register('options.0')} />
+          <textarea className="input" rows={2} placeholder="e.g. roof racks, dash cam, bull bar" {...form.register('options.0' as const)} />
         </div>
         <div className="sm:col-span-2">
           <label className="label">Notable modifications</label>
-          <input className="input" {...form.register('modifications')} />
+          <textarea className="input" rows={2} placeholder="Aftermarket upgrades or modifications" {...form.register('modifications')} />
         </div>
         <div>
           <label className="label">Rego expiry month</label>
@@ -78,11 +82,11 @@ export default function VehicleDetails({ onBack, onNext }: StepProps) {
           <input className="input" type="number" {...form.register('regoExpiryYear', { valueAsNumber: true })} />
         </div>
       </div>
-      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2 sm:justify-between">
+
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-3 sm:justify-between">
         <button type="button" className="btn btn-secondary w-full sm:w-auto" onClick={onBack}>Back</button>
-        <button type="submit" className="btn btn-primary w-full sm:w-auto">Continue</button>
+        <button type="submit" className="btn btn-primary w-full sm:w-auto">Save &amp; Continue</button>
       </div>
     </form>
   )
 }
-import Section from '@/components/Section'
