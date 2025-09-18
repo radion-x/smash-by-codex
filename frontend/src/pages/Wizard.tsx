@@ -32,14 +32,28 @@ export default function Wizard() {
 
   return (
     <div>
-      <ol className="flex items-center gap-2 text-xs mb-4 overflow-x-auto" aria-label="progress">
+      <ol className="hidden md:flex items-center gap-2 text-xs mb-4 overflow-x-auto" aria-label="progress">
         {steps.map((s) => (
-          <li key={s.id} className={`shrink-0 px-2 py-1 rounded ${step >= s.id ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600'}`}>{s.id}. {s.title}</li>
+          <li key={s.id}>
+            <button
+              disabled={s.id > step}
+              onClick={() => setStep(s.id)}
+              className={`shrink-0 px-2 py-1 rounded transition-colors ${s.id === step ? 'bg-brand-600 text-white' : s.id < step ? 'bg-brand-50 text-brand-700 hover:bg-brand-100' : 'bg-gray-50 text-gray-500 cursor-not-allowed'}`}
+            >
+              {s.id}. {s.title}
+            </button>
+          </li>
         ))}
       </ol>
 
-      <div className="card p-4 motion-safe:animate-slide-up">
-        <Current setBusy={setBusy} onNext={() => setStep(step + 1)} onBack={() => setStep(Math.max(1, step - 1))} />
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-6">
+        <div className="card p-4 motion-safe:animate-slide-up">
+          <Current setBusy={setBusy} onNext={() => setStep(step + 1)} onBack={() => setStep(Math.max(1, step - 1))} />
+        </div>
+        <aside className="hidden lg:block self-start sticky top-24 card p-4">
+          <h3 className="text-sm font-semibold mb-2">Tips</h3>
+          <p className="text-sm text-slate-600">Keep details concise. You can revisit earlier steps anytime. On mobile, photos upload faster on Wi‑Fi.</p>
+        </aside>
       </div>
     </div>
   )

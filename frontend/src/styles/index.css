@@ -10,9 +10,16 @@ body { @apply bg-gradient-to-b from-slate-50 to-white text-gray-900 antialiased;
 .dark body { @apply bg-slate-900 text-slate-100; }
 
 /* Buttons */
-.btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2; }
-.btn-primary { @apply bg-brand-600 text-white hover:bg-brand-700 focus-visible:ring-brand-600; }
-.btn-secondary { @apply bg-white text-gray-900 border border-slate-200 hover:bg-slate-50 focus-visible:ring-slate-300; }
+.btn { @apply inline-flex items-center justify-center rounded-lg h-10 px-4 text-sm font-medium tracking-tight shadow-sm transition-all duration-150 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/60 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none select-none; }
+.btn-primary { @apply bg-gradient-to-b from-brand-600 to-brand-700 text-white shadow hover:from-brand-600 hover:to-brand-700/90; }
+.btn-secondary { @apply bg-white text-slate-900 border border-slate-300 shadow-sm hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-100 dark:border-slate-700 dark:hover:bg-slate-700; }
+.btn-outline { @apply bg-transparent text-brand-700 border border-brand-600 hover:bg-brand-50 dark:text-brand-300 dark:border-brand-400 dark:hover:bg-brand-900/30; }
+.btn-ghost { @apply bg-transparent text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800; }
+.btn-danger { @apply bg-red-600 text-white hover:bg-red-700; }
+.btn-sm { @apply h-8 px-3 text-xs rounded-md; }
+.btn-lg { @apply h-12 px-6 text-base rounded-xl; }
+.btn-icon { @apply h-10 w-10 p-0 rounded-full; }
+.btn .spinner { @apply ml-2 inline-block align-middle border-2 border-white/50 border-t-white rounded-full w-4 h-4 animate-spin; }
 .dark .btn-secondary { @apply bg-slate-800 text-slate-100 border-slate-700 hover:bg-slate-700 focus-visible:ring-slate-600; }
 
 /* Inputs */

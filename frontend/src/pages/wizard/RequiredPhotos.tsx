@@ -79,9 +79,9 @@ export default function RequiredPhotos({ onBack, onNext }: StepProps) {
         Required: Front, Rear, Left, Right. If you marked damage, add at least two close-ups.
       </div>
 
-      <div className="flex justify-between">
-        <button type="button" className="btn btn-secondary" onClick={onBack}>Back</button>
-        <button type="button" className="btn btn-primary" onClick={() => {
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2 sm:justify-between">
+        <button type="button" className="btn btn-secondary w-full sm:w-auto" onClick={onBack}>Back</button>
+        <button type="button" className="btn btn-primary w-full sm:w-auto" onClick={() => {
           if (!canContinue()) { alert('Please upload Front, Rear, Left and Right photos. If damage was marked, include at least two close-ups.'); return }
           onNext()
         }}>Continue</button>

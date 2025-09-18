@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useFormStore } from '@/store/formStore'
 
-export default function MagicLink() {
+export default function MagicLink({ trigger }: { trigger?: (open: () => void) => React.ReactNode }) {
   const data = useFormStore((s) => s.data)
   const [open, setOpen] = useState(false)
   const [email, setEmail] = useState('')
@@ -22,6 +22,26 @@ export default function MagicLink() {
     }
   }
 
+  if (trigger) {
+    return (
+      <>
+        {trigger(() => setOpen(true))}
+        {open && (
+          <div className="absolute z-40">
+            <div className="card p-3">
+              <div className="flex items-center gap-2">
+                <input className="input" placeholder="Email to send link" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <button className="btn btn-secondary" disabled={busy} onClick={send}>Send</button>
+                <button className="btn btn-ghost" onClick={() => setOpen(false)}>Close</button>
+              </div>
+              {sent && <div className="mt-2 text-xs text-green-700">Sent</div>}
+            </div>
+          </div>
+        )}
+      </>
+    )
+  }
+
   return (
     <div>
       <button className="text-sm underline" onClick={() => setOpen((o) => !o)}>{open ? 'Close' : 'Send magic link'}</button>
@@ -35,4 +55,3 @@ export default function MagicLink() {
     </div>
   )
 }
-

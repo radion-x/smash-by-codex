@@ -32,10 +32,11 @@ export const useFormStore = create<FormState>()(
 // Helper: broadcast resume
 if (typeof window !== 'undefined') {
   window.addEventListener('smash:resume', (e: any) => {
-    const details = e.detail
-    if (details) {
-      useFormStore.setState({ data: details.data ?? details })
-    }
+    const payload = e.detail
+    // Support both { state: {...} } (zustand persist) and direct state
+    const state = payload?.state ?? payload
+    const data = state?.data ?? state
+    const step = typeof state?.step === 'number' ? state.step : undefined
+    useFormStore.setState((s) => ({ data: data ?? s.data, step: step ?? s.step }))
   })
 }
-

@@ -78,9 +78,9 @@ export default function AccidentDetails({ onBack, onNext }: StepProps) {
         </div>
       </div>
 
-      <div className="flex justify-between">
-        <button type="button" className="btn btn-secondary" onClick={onBack}>Back</button>
-        <button type="submit" className="btn btn-primary">Continue</button>
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2 sm:justify-between">
+        <button type="button" className="btn btn-secondary w-full sm:w-auto" onClick={onBack}>Back</button>
+        <button type="submit" className="btn btn-primary w-full sm:w-auto">Continue</button>
       </div>
     </form>
   )

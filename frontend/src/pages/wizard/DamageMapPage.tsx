@@ -13,9 +13,9 @@ export default function DamageMapPage({ onBack, onNext }: StepProps) {
     <div className="space-y-4">
       <Section title="Damage map" subtitle="Tap the panels that are damaged and tell us the type and severity."></Section>
       <DamageMap value={value} onChange={onChange} />
-      <div className="flex justify-between">
-        <button type="button" className="btn btn-secondary" onClick={onBack}>Back</button>
-        <button type="button" className="btn btn-primary" onClick={onNext}>Continue</button>
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2 sm:justify-between">
+        <button type="button" className="btn btn-secondary w-full sm:w-auto" onClick={onBack}>Back</button>
+        <button type="button" className="btn btn-primary w-full sm:w-auto" onClick={onNext}>Continue</button>
       </div>
     </div>
   )

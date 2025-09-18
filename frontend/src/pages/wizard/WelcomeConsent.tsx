@@ -50,8 +50,9 @@ export default function WelcomeConsent({ onNext }: StepProps) {
         </div>
       )}
 
-      <div className="flex justify-end gap-2">
-        <button type="submit" className="btn btn-primary">Continue</button>
+      <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center gap-2 sm:justify-between">
+        <span />
+        <button type="submit" className="btn btn-primary w-full sm:w-auto">Continue</button>
       </div>
     </form>
   )

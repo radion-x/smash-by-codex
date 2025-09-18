@@ -1,5 +1,8 @@
 import type { Config } from 'tailwindcss'
 import forms from '@tailwindcss/forms'
+// Use Tailwind blue palette for brand to ensure all shades exist
+// (50..900), avoiding missing class errors like text-brand-300.
+import colors from 'tailwindcss/colors'
 
 export default {
   darkMode: 'class',
@@ -10,12 +13,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          600: '#2563eb',
-          700: '#1d4ed8',
-        },
+        brand: colors.red,
       },
       keyframes: {
         'fade-in': {
