@@ -32,3 +32,11 @@ body { @apply bg-gradient-to-b from-slate-50 to-white text-gray-900 antialiased;
 /* Card */
 .card { @apply bg-white/90 backdrop-blur rounded-lg border border-slate-200 shadow-sm; }
 .dark .card { @apply bg-slate-800/80 border-slate-700; }
+
+/* Stepper helpers */
+.stepper-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+          mask-image: linear-gradient(to right, transparent, #000 28px, #000 calc(100% - 28px), transparent);
+}
+.scrollbar-none::-webkit-scrollbar { display: none; }
+.scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }

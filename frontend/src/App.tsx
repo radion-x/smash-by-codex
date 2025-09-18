@@ -29,24 +29,26 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-10 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-5xl px-4 py-2 flex items-center justify-between gap-3 flex-wrap">
-          <Link to="/" className="flex items-center gap-3 truncate">
-            <img src="/assets/msr_dk_red.png" alt="Matraville Smash Repairs" className="h-9 w-auto dark:hidden" />
-            <img src="/assets/msr__white_bright_red.png" alt="Matraville Smash Repairs" className="h-9 w-auto hidden dark:block" />
-            <span className="sr-only">Matraville Smash Repairs Onboarding</span>
-          </Link>
-          <div className="hidden md:block text-xs text-slate-600 dark:text-slate-300">Step {current} of {total} ({progress}%)</div>
-          <nav className="relative flex items-center gap-3">
-            <button className="text-sm underline" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</button>
-            <MagicLink trigger={(open) => (
-              <button className="btn btn-outline btn-sm" onClick={open}>Send magic link</button>
-            )} />
-            <a className="text-sm underline" href="/admin">Admin</a>
-          </nav>
-        </div>
-        <div className="h-1 bg-slate-100 dark:bg-slate-800 rounded">
-          <div className="h-full bg-brand-600 rounded transition-all" style={{ width: `${progress}%` }} />
+      <header className="sticky top-0 z-10 bg-white/95 dark:bg-slate-900/95 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+        <div className="mx-auto max-w-6xl px-4 py-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 items-center gap-x-4 gap-y-2">
+            <Link to="/" className="flex items-center gap-3 truncate col-span-2 md:col-span-1">
+              <img src="/assets/msr_dk_red.png" alt="Matraville Smash Repairs" className="h-10 w-auto dark:hidden" />
+              <img src="/assets/msr__white_bright_red.png" alt="Matraville Smash Repairs" className="h-10 w-auto hidden dark:block" />
+              <span className="sr-only">Matraville Smash Repairs Onboarding</span>
+            </Link>
+            <div className="hidden md:flex items-center justify-center text-xs text-slate-600 dark:text-slate-300">
+              Step {current} of {total} ({progress}%)
+            </div>
+            <nav className="flex items-center justify-end gap-3 col-span-2 md:col-span-1">
+              <button className="text-sm underline" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</button>
+              <MagicLink trigger={(open) => (
+                <button className="btn btn-outline btn-sm" onClick={open}>Send magic link</button>
+              )} />
+              <a className="text-sm underline" href="/admin">Admin</a>
+            </nav>
+          </div>
+            {/* Removed duplicate global progress bar; stepper owns progress UI */}
         </div>
         {hasDraft && (
           <div className="bg-yellow-50 border-t border-yellow-200">

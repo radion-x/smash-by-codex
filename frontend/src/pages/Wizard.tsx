@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Stepper from '@/components/Stepper'
 import WelcomeConsent from './wizard/WelcomeConsent'
 import YourDetails from './wizard/YourDetails'
 import VehicleDetails from './wizard/VehicleDetails'
@@ -32,21 +33,16 @@ export default function Wizard() {
 
   return (
     <div>
-      <ol className="hidden md:flex items-center gap-2 text-xs mb-4 overflow-x-auto" aria-label="progress">
-        {steps.map((s) => (
-          <li key={s.id}>
-            <button
-              disabled={s.id > step}
-              onClick={() => setStep(s.id)}
-              className={`shrink-0 px-2 py-1 rounded transition-colors ${s.id === step ? 'bg-brand-600 text-white' : s.id < step ? 'bg-brand-50 text-brand-700 hover:bg-brand-100' : 'bg-gray-50 text-gray-500 cursor-not-allowed'}`}
-            >
-              {s.id}. {s.title}
-            </button>
-          </li>
-        ))}
-      </ol>
+      <Stepper
+        steps={steps.map(s => ({ key: String(s.id), label: s.title }))}
+        currentIndex={step-1}
+        onStepChange={(i) => setStep(i+1)}
+        canNavigateTo={(i) => i <= (step-1)}
+        sticky
+        showProgressBar
+      />
 
-      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-6">
+      <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-6 mt-4">
         <div className="card p-4 motion-safe:animate-slide-up">
           <Current setBusy={setBusy} onNext={() => setStep(step + 1)} onBack={() => setStep(Math.max(1, step - 1))} />
         </div>
