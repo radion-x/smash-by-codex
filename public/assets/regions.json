@@ -1,0 +1,1115 @@
+{
+  "version": "1.0",
+  "spritePath": "/assets/car-diagram.png",
+  "coordinateSystem": "relative",
+  "views": [
+    {
+      "id": "top",
+      "label": "Top",
+      "rect": {
+        "x": 0.1,
+        "y": 0.06,
+        "w": 0.8,
+        "h": 0.22
+      },
+      "viewNotes": "Rough bounds for the top view within the sprite image. Adjust after aligning.",
+      "regions": [
+        {
+          "id": "bonnet",
+          "label": "Bonnet",
+          "shape": "polygon",
+          "points": [
+            [
+              0.08,
+              0.3
+            ],
+            [
+              0.4,
+              0.18
+            ],
+            [
+              0.48,
+              0.18
+            ],
+            [
+              0.48,
+              0.6
+            ],
+            [
+              0.4,
+              0.6
+            ],
+            [
+              0.08,
+              0.48
+            ]
+          ]
+        },
+        {
+          "id": "roof",
+          "label": "Roof",
+          "shape": "polygon",
+          "points": [
+            [
+              0.42,
+              0.22
+            ],
+            [
+              0.75,
+              0.22
+            ],
+            [
+              0.82,
+              0.3
+            ],
+            [
+              0.82,
+              0.66
+            ],
+            [
+              0.75,
+              0.74
+            ],
+            [
+              0.42,
+              0.74
+            ]
+          ]
+        },
+        {
+          "id": "boot",
+          "label": "Boot",
+          "shape": "polygon",
+          "points": [
+            [
+              0.82,
+              0.28
+            ],
+            [
+              0.92,
+              0.36
+            ],
+            [
+              0.92,
+              0.66
+            ],
+            [
+              0.82,
+              0.74
+            ],
+            [
+              0.76,
+              0.66
+            ],
+            [
+              0.76,
+              0.32
+            ]
+          ]
+        },
+        {
+          "id": "underbody",
+          "label": "Underbody",
+          "shape": "polygon",
+          "points": [
+            [
+              0.3,
+              0.84
+            ],
+            [
+              0.7,
+              0.84
+            ],
+            [
+              0.7,
+              0.96
+            ],
+            [
+              0.3,
+              0.96
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "left",
+      "label": "Left side",
+      "rect": {
+        "x": 0.06,
+        "y": 0.42,
+        "w": 0.4,
+        "h": 0.23
+      },
+      "viewNotes": "Left elevation. Doors, guards, wheels, pillars, sill.",
+      "regions": [
+        {
+          "id": "lf_guard",
+          "label": "Left Front Guard",
+          "shape": "polygon",
+          "points": [
+            [
+              0.06,
+              0.58
+            ],
+            [
+              0.14,
+              0.52
+            ],
+            [
+              0.22,
+              0.52
+            ],
+            [
+              0.22,
+              0.74
+            ],
+            [
+              0.12,
+              0.78
+            ],
+            [
+              0.06,
+              0.7
+            ]
+          ]
+        },
+        {
+          "id": "lf_door",
+          "label": "Left Front Door",
+          "shape": "polygon",
+          "points": [
+            [
+              0.22,
+              0.48
+            ],
+            [
+              0.43,
+              0.48
+            ],
+            [
+              0.43,
+              0.76
+            ],
+            [
+              0.22,
+              0.76
+            ]
+          ]
+        },
+        {
+          "id": "lr_door",
+          "label": "Left Rear Door",
+          "shape": "polygon",
+          "points": [
+            [
+              0.43,
+              0.48
+            ],
+            [
+              0.63,
+              0.48
+            ],
+            [
+              0.63,
+              0.76
+            ],
+            [
+              0.43,
+              0.76
+            ]
+          ]
+        },
+        {
+          "id": "lr_quarter",
+          "label": "Left Rear Quarter",
+          "shape": "polygon",
+          "points": [
+            [
+              0.63,
+              0.52
+            ],
+            [
+              0.8,
+              0.52
+            ],
+            [
+              0.88,
+              0.6
+            ],
+            [
+              0.86,
+              0.74
+            ],
+            [
+              0.74,
+              0.78
+            ],
+            [
+              0.63,
+              0.74
+            ]
+          ]
+        },
+        {
+          "id": "lf_wheel",
+          "label": "Left Front Wheel",
+          "shape": "polygon",
+          "points": [
+            [
+              0.15,
+              0.78
+            ],
+            [
+              0.2,
+              0.78
+            ],
+            [
+              0.23,
+              0.86
+            ],
+            [
+              0.2,
+              0.94
+            ],
+            [
+              0.15,
+              0.94
+            ],
+            [
+              0.12,
+              0.86
+            ]
+          ]
+        },
+        {
+          "id": "lr_wheel",
+          "label": "Left Rear Wheel",
+          "shape": "polygon",
+          "points": [
+            [
+              0.72,
+              0.8
+            ],
+            [
+              0.77,
+              0.8
+            ],
+            [
+              0.8,
+              0.88
+            ],
+            [
+              0.77,
+              0.96
+            ],
+            [
+              0.72,
+              0.96
+            ],
+            [
+              0.69,
+              0.88
+            ]
+          ]
+        },
+        {
+          "id": "left_sill",
+          "label": "Left Sill",
+          "shape": "polygon",
+          "points": [
+            [
+              0.22,
+              0.84
+            ],
+            [
+              0.63,
+              0.84
+            ],
+            [
+              0.63,
+              0.92
+            ],
+            [
+              0.22,
+              0.92
+            ]
+          ]
+        },
+        {
+          "id": "left_a_pillar",
+          "label": "Left A-Pillar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.2,
+              0.4
+            ],
+            [
+              0.23,
+              0.36
+            ],
+            [
+              0.26,
+              0.36
+            ],
+            [
+              0.26,
+              0.76
+            ],
+            [
+              0.22,
+              0.76
+            ],
+            [
+              0.2,
+              0.7
+            ]
+          ]
+        },
+        {
+          "id": "left_b_pillar",
+          "label": "Left B-Pillar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.43,
+              0.4
+            ],
+            [
+              0.46,
+              0.4
+            ],
+            [
+              0.46,
+              0.78
+            ],
+            [
+              0.43,
+              0.78
+            ]
+          ]
+        },
+        {
+          "id": "left_c_pillar",
+          "label": "Left C-Pillar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.63,
+              0.4
+            ],
+            [
+              0.66,
+              0.4
+            ],
+            [
+              0.66,
+              0.76
+            ],
+            [
+              0.63,
+              0.76
+            ]
+          ]
+        },
+        {
+          "id": "lf_mirror",
+          "label": "Left Mirror",
+          "shape": "polygon",
+          "points": [
+            [
+              0.18,
+              0.56
+            ],
+            [
+              0.22,
+              0.56
+            ],
+            [
+              0.24,
+              0.62
+            ],
+            [
+              0.2,
+              0.64
+            ],
+            [
+              0.18,
+              0.62
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "right",
+      "label": "Right side",
+      "rect": {
+        "x": 0.54,
+        "y": 0.42,
+        "w": 0.4,
+        "h": 0.23
+      },
+      "viewNotes": "Right elevation. Mirrors, doors, guards, wheels, pillars, sill.",
+      "regions": [
+        {
+          "id": "rf_guard",
+          "label": "Right Front Guard",
+          "shape": "polygon",
+          "points": [
+            [
+              0.78,
+              0.58
+            ],
+            [
+              0.7,
+              0.52
+            ],
+            [
+              0.6,
+              0.52
+            ],
+            [
+              0.6,
+              0.74
+            ],
+            [
+              0.7,
+              0.78
+            ],
+            [
+              0.78,
+              0.7
+            ]
+          ]
+        },
+        {
+          "id": "rf_door",
+          "label": "Right Front Door",
+          "shape": "polygon",
+          "points": [
+            [
+              0.6,
+              0.48
+            ],
+            [
+              0.4,
+              0.48
+            ],
+            [
+              0.4,
+              0.76
+            ],
+            [
+              0.6,
+              0.76
+            ]
+          ]
+        },
+        {
+          "id": "rr_door",
+          "label": "Right Rear Door",
+          "shape": "polygon",
+          "points": [
+            [
+              0.4,
+              0.48
+            ],
+            [
+              0.21,
+              0.48
+            ],
+            [
+              0.21,
+              0.76
+            ],
+            [
+              0.4,
+              0.76
+            ]
+          ]
+        },
+        {
+          "id": "rr_quarter",
+          "label": "Right Rear Quarter",
+          "shape": "polygon",
+          "points": [
+            [
+              0.21,
+              0.52
+            ],
+            [
+              0.04,
+              0.52
+            ],
+            [
+              0.0,
+              0.6
+            ],
+            [
+              0.02,
+              0.74
+            ],
+            [
+              0.14,
+              0.78
+            ],
+            [
+              0.21,
+              0.74
+            ]
+          ]
+        },
+        {
+          "id": "rf_wheel",
+          "label": "Right Front Wheel",
+          "shape": "polygon",
+          "points": [
+            [
+              0.58,
+              0.8
+            ],
+            [
+              0.53,
+              0.8
+            ],
+            [
+              0.5,
+              0.88
+            ],
+            [
+              0.53,
+              0.96
+            ],
+            [
+              0.58,
+              0.96
+            ],
+            [
+              0.61,
+              0.88
+            ]
+          ]
+        },
+        {
+          "id": "rr_wheel",
+          "label": "Right Rear Wheel",
+          "shape": "polygon",
+          "points": [
+            [
+              0.07,
+              0.8
+            ],
+            [
+              0.02,
+              0.8
+            ],
+            [
+              0.0,
+              0.88
+            ],
+            [
+              0.02,
+              0.96
+            ],
+            [
+              0.07,
+              0.96
+            ],
+            [
+              0.1,
+              0.88
+            ]
+          ]
+        },
+        {
+          "id": "right_sill",
+          "label": "Right Sill",
+          "shape": "polygon",
+          "points": [
+            [
+              0.6,
+              0.84
+            ],
+            [
+              0.21,
+              0.84
+            ],
+            [
+              0.21,
+              0.92
+            ],
+            [
+              0.6,
+              0.92
+            ]
+          ]
+        },
+        {
+          "id": "right_a_pillar",
+          "label": "Right A-Pillar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.62,
+              0.4
+            ],
+            [
+              0.59,
+              0.36
+            ],
+            [
+              0.56,
+              0.36
+            ],
+            [
+              0.56,
+              0.76
+            ],
+            [
+              0.6,
+              0.76
+            ],
+            [
+              0.62,
+              0.7
+            ]
+          ]
+        },
+        {
+          "id": "right_b_pillar",
+          "label": "Right B-Pillar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.4,
+              0.4
+            ],
+            [
+              0.37,
+              0.4
+            ],
+            [
+              0.37,
+              0.78
+            ],
+            [
+              0.4,
+              0.78
+            ]
+          ]
+        },
+        {
+          "id": "right_c_pillar",
+          "label": "Right C-Pillar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.21,
+              0.4
+            ],
+            [
+              0.18,
+              0.4
+            ],
+            [
+              0.18,
+              0.76
+            ],
+            [
+              0.21,
+              0.76
+            ]
+          ]
+        },
+        {
+          "id": "rf_mirror",
+          "label": "Right Mirror",
+          "shape": "polygon",
+          "points": [
+            [
+              0.64,
+              0.56
+            ],
+            [
+              0.6,
+              0.56
+            ],
+            [
+              0.58,
+              0.62
+            ],
+            [
+              0.62,
+              0.64
+            ],
+            [
+              0.64,
+              0.62
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "front",
+      "label": "Front",
+      "rect": {
+        "x": 0.16,
+        "y": 0.72,
+        "w": 0.28,
+        "h": 0.23
+      },
+      "viewNotes": "Front elevation. Bar, grille, headlights, windscreen lower area.",
+      "regions": [
+        {
+          "id": "front_bar",
+          "label": "Front Bumper/Bar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.1,
+              0.7
+            ],
+            [
+              0.9,
+              0.7
+            ],
+            [
+              0.9,
+              0.98
+            ],
+            [
+              0.1,
+              0.98
+            ]
+          ]
+        },
+        {
+          "id": "grille",
+          "label": "Grille",
+          "shape": "polygon",
+          "points": [
+            [
+              0.3,
+              0.52
+            ],
+            [
+              0.7,
+              0.52
+            ],
+            [
+              0.68,
+              0.64
+            ],
+            [
+              0.32,
+              0.64
+            ]
+          ]
+        },
+        {
+          "id": "lf_headlight",
+          "label": "Left Headlight",
+          "shape": "polygon",
+          "points": [
+            [
+              0.08,
+              0.46
+            ],
+            [
+              0.24,
+              0.46
+            ],
+            [
+              0.26,
+              0.6
+            ],
+            [
+              0.1,
+              0.62
+            ]
+          ]
+        },
+        {
+          "id": "rf_headlight",
+          "label": "Right Headlight",
+          "shape": "polygon",
+          "points": [
+            [
+              0.76,
+              0.46
+            ],
+            [
+              0.92,
+              0.46
+            ],
+            [
+              0.9,
+              0.62
+            ],
+            [
+              0.74,
+              0.6
+            ]
+          ]
+        },
+        {
+          "id": "lf_guard",
+          "label": "Left Front Guard (Front View)",
+          "shape": "polygon",
+          "points": [
+            [
+              0.0,
+              0.4
+            ],
+            [
+              0.16,
+              0.4
+            ],
+            [
+              0.12,
+              0.7
+            ],
+            [
+              0.0,
+              0.72
+            ]
+          ]
+        },
+        {
+          "id": "rf_guard",
+          "label": "Right Front Guard (Front View)",
+          "shape": "polygon",
+          "points": [
+            [
+              0.84,
+              0.4
+            ],
+            [
+              1.0,
+              0.4
+            ],
+            [
+              1.0,
+              0.72
+            ],
+            [
+              0.88,
+              0.7
+            ]
+          ]
+        },
+        {
+          "id": "windscreen",
+          "label": "Windscreen (lower)",
+          "shape": "polygon",
+          "points": [
+            [
+              0.22,
+              0.3
+            ],
+            [
+              0.78,
+              0.3
+            ],
+            [
+              0.74,
+              0.4
+            ],
+            [
+              0.26,
+              0.4
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rear",
+      "label": "Rear",
+      "rect": {
+        "x": 0.62,
+        "y": 0.72,
+        "w": 0.28,
+        "h": 0.23
+      },
+      "viewNotes": "Rear elevation. Boot, bar, glass, taillights.",
+      "regions": [
+        {
+          "id": "rear_bar",
+          "label": "Rear Bumper/Bar",
+          "shape": "polygon",
+          "points": [
+            [
+              0.1,
+              0.72
+            ],
+            [
+              0.9,
+              0.72
+            ],
+            [
+              0.9,
+              0.98
+            ],
+            [
+              0.1,
+              0.98
+            ]
+          ]
+        },
+        {
+          "id": "boot",
+          "label": "Boot (Rear Lid)",
+          "shape": "polygon",
+          "points": [
+            [
+              0.2,
+              0.48
+            ],
+            [
+              0.8,
+              0.48
+            ],
+            [
+              0.78,
+              0.64
+            ],
+            [
+              0.22,
+              0.64
+            ]
+          ]
+        },
+        {
+          "id": "rear_glass",
+          "label": "Rear Glass",
+          "shape": "polygon",
+          "points": [
+            [
+              0.26,
+              0.3
+            ],
+            [
+              0.74,
+              0.3
+            ],
+            [
+              0.7,
+              0.4
+            ],
+            [
+              0.3,
+              0.4
+            ]
+          ]
+        },
+        {
+          "id": "lr_taillight",
+          "label": "Left Taillight",
+          "shape": "polygon",
+          "points": [
+            [
+              0.06,
+              0.52
+            ],
+            [
+              0.22,
+              0.52
+            ],
+            [
+              0.24,
+              0.64
+            ],
+            [
+              0.08,
+              0.64
+            ]
+          ]
+        },
+        {
+          "id": "rr_taillight",
+          "label": "Right Taillight",
+          "shape": "polygon",
+          "points": [
+            [
+              0.78,
+              0.52
+            ],
+            [
+              0.94,
+              0.52
+            ],
+            [
+              0.92,
+              0.64
+            ],
+            [
+              0.76,
+              0.64
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "legend": [
+    {
+      "type": "scratch",
+      "label": "Scratch"
+    },
+    {
+      "type": "scrape",
+      "label": "Scrape"
+    },
+    {
+      "type": "dent",
+      "label": "Dent"
+    },
+    {
+      "type": "crease",
+      "label": "Crease"
+    },
+    {
+      "type": "puncture",
+      "label": "Puncture"
+    },
+    {
+      "type": "crack",
+      "label": "Crack"
+    },
+    {
+      "type": "broken",
+      "label": "Broken"
+    },
+    {
+      "type": "paint_transfer",
+      "label": "Paint transfer"
+    },
+    {
+      "type": "glass_chip",
+      "label": "Glass chip"
+    },
+    {
+      "type": "glass_crack",
+      "label": "Glass crack"
+    },
+    {
+      "type": "alignment",
+      "label": "Alignment issue"
+    },
+    {
+      "type": "other",
+      "label": "Other"
+    }
+  ],
+  "severity": [
+    "minor",
+    "moderate",
+    "severe",
+    "replace",
+    "unsure"
+  ]
+}
